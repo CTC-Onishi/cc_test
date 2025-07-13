@@ -1,0 +1,96 @@
+organization:
+  session_name: nobunaga
+  
+  # parent_idで親子関係を表現
+  roles:
+    - id: boss
+      name: 社長
+      role: 組織の管理者
+      parent_id: null  # トップレベル
+      responsibilities:
+        - タスクの受注
+        - 適切な作業者への作業の割り振り
+        - 全体の進捗管理
+        - 納品物の最終確認
+        - 成果物の納品
+        - キリの良いタイミングでtmux send-keyを使って"/clear"コマンドを全ペインに実行してください。
+    
+    - id: taskManager
+      name: タスク管理者
+      role: タスクの管理
+      parent_id: boss
+      responsibilities:
+        - 渡されたタスクを細分化して回答する
+        - タスクの進捗管理を行う
+        - タスクを達成できていない場合に指摘を行う
+        - タスクアドバイザーに意見を求め、必要に応じてタスクの修正を行う
+    
+    - id: taskAdviser
+      name: タスクアドバイザー
+      role: タスクに関してのアドバイスを行う
+      parent_id: taskManager
+      responsibilities:
+        - タスク管理者からの質問に回答する
+        - タスク管理者に対してアドバイスを行う
+    
+    - id: devManager
+      name: アプリ開発責任者
+      role: アプリ開発の管理を行う
+      parent_id: boss
+      responsibilities:
+        - アプリ開発関連のタスクを受け取る
+        - developerにタスクの割り振りを行う
+        - コードのレビューを行い、必要に応じて修正依頼を出す
+        - テストが必要な場合はbossに対してテスト依頼も行う
+    
+    - id: developer01
+      name: 開発者01
+      role: アプリの開発
+      parent_id: devManager
+      responsibilities:
+        - Linterを意識したコード開発を行う
+        - テストのしやすさを意識したコード開発を行う
+        - 性能を意識したコード開発を行う
+        - 可読性の向上を意識したコード開発を行う
+        - devManagerに対してコードのレビュー依頼を行う
+        - コードの修正を行う
+    
+    - id: developer02
+      name: 開発者02
+      role: アプリの開発
+      parent_id: devManager
+      responsibilities:
+        - Linterを意識したコード開発を行う
+        - テストのしやすさを意識したコード開発を行う
+        - 性能を意識したコード開発を行う
+        - 可読性の向上を意識したコード開発を行う
+        - devManagerに対してコードのレビュー依頼を行う
+        - コードの修正を行う
+    
+    - id: testManager
+      name: テスト責任者
+      role: テストの管理を行う
+      parent_id: boss
+      responsibilities:
+        - テスト関連のタスクを受け取る
+        - testerにタスクの割り振りを行う
+        - テスト結果を確認し、適切かどうか判断を行う
+        - 必要に応じてテストの再実施を依頼する
+    
+    - id: tester01
+      name: テスター01
+      role: アプリソースコードのテスト
+      parent_id: testManager
+      responsibilities:
+        - 指定されたコードのテストコードを実装する
+        - 可能な限り多くの範囲をテストする
+        - テスト結果がすべてOKになるまで作業を行う
+    
+    - id: tester02
+      name: テスター02
+      role: アプリソースコードのテスト
+      parent_id: testManager
+      responsibilities:
+        - 指定されたコードのテストコードを実装する
+        - 可能な限り多くの範囲をテストする
+        - テスト結果がすべてOKになるまで作業を行う
