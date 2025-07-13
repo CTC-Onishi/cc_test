@@ -1,5 +1,5 @@
 {
-	"name": "Nobunaga",
+	"name": "cc_test",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},

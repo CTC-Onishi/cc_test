@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Nobunaga Organization Setup Script
+# cc_test Organization Setup Script
 # Creates tmux session with hierarchical pane structure based on config.yml
 
-CONFIG_FILE="/workspaces/nobunaga/orgs/config.yml"
+CONFIG_FILE="/workspaces/cc_test/orgs/config.yml"
 
 # Check if config file exists
 if [ ! -f "$CONFIG_FILE" ]; then

@@ -1,5 +1,5 @@
 organization:
-  session_name: nobunaga
+  session_name: cctest
   
   # parent_idで親子関係を表現
   roles:

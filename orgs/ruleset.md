@@ -3,8 +3,8 @@
 ## 組織構造と階層
 
 ### 基本情報
-- **組織設定ファイル**: `/workspaces/nobunaga/orgs/config.yml`
-- **Tmuxセッション**: `/workspaces/nobunaga/orgs/config.yml`を参照する
+- **組織設定ファイル**: `/workspaces/cc_test/orgs/config.yml`
+- **Tmuxセッション**: `/workspaces/cc_test/orgs/config.yml`を参照する
 
 ## コミュニケーションルールと制限
 
@@ -24,11 +24,11 @@ claude --dangerously-skip-permissions
 権限確認承認: "1", "y", "yes"
 
 ### 2. tmuxのペインに対して役割と責任の割り当て
-`/workspaces/nobunaga/config.yml` に記載されている`roles`に対して、上から順にペインの割り当てを行う。
+`/workspaces/cc_test/config.yml` に記載されている`roles`に対して、上から順にペインの割り当てを行う。
 上から下にペイン0から割り当てていく、まずは自身の役割と責任とペイン番号を把握する。
 その後、各ペインに対して順に役割と責任をsend-keysで伝えていく
 
-各ペインには`/workspaces/nobunaga/config.yml`に基づいて、以下の形式で役割を割り当てる。
+各ペインには`/workspaces/cc_test/config.yml`に基づいて、以下の形式で役割を割り当てる。
 ```
 ペイン{id}。あなたの役割は{role}です。あなたの主な責任は{responsibilities}です。
 連絡をできる相手は{parent_id}で関連づいているroleとbossのみです。
