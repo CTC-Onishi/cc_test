@@ -49,4 +49,4 @@ RUN curl -LJO https://github.com/mikefarah/yq/releases/latest/download/yq_linux_
     && mv yq_linux_amd64 /usr/local/bin/yq \
     && chmod a+x /usr/local/bin/yq
     
-COPY .devcontainer/.tmux.conf /root/.tmux.conf
+COPY ./.tmux.conf /root/
