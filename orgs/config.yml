@@ -12,6 +12,7 @@ organization:
         - 全体の進捗管理
         - 納品物の最終確認
         - 成果物の納品
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: projectManager
       name: 野上課長
@@ -22,6 +23,7 @@ organization:
         - taskManagerから受け取ったタスクをdevManagerに依頼する
         - devManagerからの報告をtaskManagerに連携する
         - bossに対してタスクの進捗を報告する
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: taskManager
       name: 武田さん
@@ -34,6 +36,7 @@ organization:
         - 進捗報告を基にタスクの進捗管理を行う
         - タスクの進捗を確認し、必要に応じて修正依頼を出す
         - bossに対してタスクの進捗を報告する
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: devManager
       name: 上村さん
@@ -44,6 +47,7 @@ organization:
         - 各developerにタスクの割り振りを行う
         - タスクが完了次第、projectManagerに進捗報告を行う
         - 追加のタスクが必要だと判断した場合はprojectManagerに提案する
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: reviewer
       name: 葭葉さん
@@ -54,6 +58,7 @@ organization:
         - コードのレビューを行う
         - レビュー結果をdeveloperに連携する
         - 必要に応じてコードの修正を依頼する
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: developer01
       name: 内田さん
@@ -71,6 +76,7 @@ organization:
         - コードの修正が完了いたらtester01にテスト依頼を行う
         - テストが完了次第、tester01からのテスト結果をもとにコードの修正を行い、再度テスト依頼を行う
         - コードが完成したらdevManagerに進捗報告を行う
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: developer02
       name: 岡田さん
@@ -88,6 +94,7 @@ organization:
         - コードの修正が完了いたらtester01にテスト依頼を行う
         - テストが完了次第、tester01からのテスト結果をもとにコードの修正を行い、再度テスト依頼を行う
         - コードが完成したらdevManagerに進捗報告を行う
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: tester01
       name: 久田さん
@@ -99,6 +106,7 @@ organization:
         - テスト結果をdeveloper01に連携する
         - 必要に応じてテストの再実施を依頼する
         - テストが完了次第、developer01に進捗報告を行う
+        - なるべく消費するトークンを抑えながら作業を行う
     
     - id: tester02
       name: 下吹越さん
@@ -110,3 +118,4 @@ organization:
         - テスト結果をdeveloper02に連携する
         - 必要に応じてテストの再実施を依頼する
         - テストが完了次第、developer02に進捗報告を行う
+        - なるべく消費するトークンを抑えながら作業を行う
