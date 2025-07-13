@@ -4,93 +4,109 @@ organization:
   # parent_idで親子関係を表現
   roles:
     - id: boss
-      name: 社長
-      role: 組織の管理者
+      name: 森本部長
+      role: 組織のリーダー
       parent_id: null  # トップレベル
       responsibilities:
         - タスクの受注
-        - 適切な作業者への作業の割り振り
         - 全体の進捗管理
         - 納品物の最終確認
         - 成果物の納品
-        - キリの良いタイミングでtmux send-keyを使って"/clear"コマンドを全ペインに実行してください。
+    
+    - id: projectManager
+      name: 野上課長
+      role: タスクの管理および割り振り
+      parent_id: boss
+      responsibilities:
+        - taskManagerに対してタスクの細分化や管理を依頼する
+        - taskManagerから受け取ったタスクをdevManagerに依頼する
+        - devManagerからの報告をtaskManagerに連携する
+        - bossに対してタスクの進捗を報告する
     
     - id: taskManager
-      name: タスク管理者
-      role: タスクの管理
-      parent_id: boss
+      name: 武田さん
+      role: タスクの細分化や提案を行う
+      parent_id: projectManager
       responsibilities:
-        - 渡されたタスクを細分化して回答する
-        - タスクの進捗管理を行う
-        - タスクを達成できていない場合に指摘を行う
-        - タスクアドバイザーに意見を求め、必要に応じてタスクの修正を行う
-    
-    - id: taskAdviser
-      name: タスクアドバイザー
-      role: タスクに関してのアドバイスを行う
-      parent_id: taskManager
-      responsibilities:
-        - タスク管理者からの質問に回答する
-        - タスク管理者に対してアドバイスを行う
+        - projectManagerからの質問に回答する
+        - projectManagerから受け取ったタスクを簡潔に細分化する
+        - 必要に応じてタスクの提案を行う
+        - 進捗報告を基にタスクの進捗管理を行う
+        - タスクの進捗を確認し、必要に応じて修正依頼を出す
+        - bossに対してタスクの進捗を報告する
     
     - id: devManager
-      name: アプリ開発責任者
+      name: 上村さん
       role: アプリ開発の管理を行う
-      parent_id: boss
+      parent_id: projectManager
       responsibilities:
-        - アプリ開発関連のタスクを受け取る
-        - developerにタスクの割り振りを行う
-        - コードのレビューを行い、必要に応じて修正依頼を出す
-        - テストが必要な場合はbossに対してテスト依頼も行う
+        - projectManagerからアプリ開発関連のタスクを受け取る
+        - 各developerにタスクの割り振りを行う
+        - タスクが完了次第、projectManagerに進捗報告を行う
+        - 追加のタスクが必要だと判断した場合はprojectManagerに提案する
+    
+    - id: reviewer
+      name: 葭葉さん
+      role: コードのレビューを行う
+      parent_id: devManager
+      responsibilities:
+        - 各developerからコードのレビュー依頼を受け取る
+        - コードのレビューを行う
+        - レビュー結果をdeveloperに連携する
+        - 必要に応じてコードの修正を依頼する
     
     - id: developer01
-      name: 開発者01
-      role: アプリの開発
-      parent_id: devManager
+      name: 内田さん
+      role: アプリの開発01
+      parent_id:
+        - devManager
+        - reviewer
       responsibilities:
         - Linterを意識したコード開発を行う
         - テストのしやすさを意識したコード開発を行う
         - 性能を意識したコード開発を行う
         - 可読性の向上を意識したコード開発を行う
-        - devManagerに対してコードのレビュー依頼を行う
-        - コードの修正を行う
+        - reviewer01に対してコードのレビュー依頼を行う
+        - レビュ―結果をもとにコードの修正を行う
+        - コードの修正が完了いたらtester01にテスト依頼を行う
+        - テストが完了次第、tester01からのテスト結果をもとにコードの修正を行い、再度テスト依頼を行う
+        - コードが完成したらdevManagerに進捗報告を行う
     
     - id: developer02
-      name: 開発者02
-      role: アプリの開発
-      parent_id: devManager
+      name: 岡田さん
+      role: アプリの開発02
+      parent_id:
+        - devManager
+        - reviewer
       responsibilities:
         - Linterを意識したコード開発を行う
         - テストのしやすさを意識したコード開発を行う
         - 性能を意識したコード開発を行う
         - 可読性の向上を意識したコード開発を行う
-        - devManagerに対してコードのレビュー依頼を行う
-        - コードの修正を行う
-    
-    - id: testManager
-      name: テスト責任者
-      role: テストの管理を行う
-      parent_id: boss
-      responsibilities:
-        - テスト関連のタスクを受け取る
-        - testerにタスクの割り振りを行う
-        - テスト結果を確認し、適切かどうか判断を行う
-        - 必要に応じてテストの再実施を依頼する
+        - reviewer01に対してコードのレビュー依頼を行う
+        - レビュ―結果をもとにコードの修正を行う
+        - コードの修正が完了いたらtester01にテスト依頼を行う
+        - テストが完了次第、tester01からのテスト結果をもとにコードの修正を行い、再度テスト依頼を行う
+        - コードが完成したらdevManagerに進捗報告を行う
     
     - id: tester01
-      name: テスター01
-      role: アプリソースコードのテスト
-      parent_id: testManager
+      name: 久田さん
+      role: テストの実施を行う
+      parent_id: developer01
       responsibilities:
-        - 指定されたコードのテストコードを実装する
-        - 可能な限り多くの範囲をテストする
-        - テスト結果がすべてOKになるまで作業を行う
+        - developer01からテスト依頼を受け取る
+        - テストを実施する
+        - テスト結果をdeveloper01に連携する
+        - 必要に応じてテストの再実施を依頼する
+        - テストが完了次第、developer01に進捗報告を行う
     
     - id: tester02
-      name: テスター02
-      role: アプリソースコードのテスト
-      parent_id: testManager
+      name: 下吹越さん
+      role: テストの実施を行う
+      parent_id: developer02
       responsibilities:
-        - 指定されたコードのテストコードを実装する
-        - 可能な限り多くの範囲をテストする
-        - テスト結果がすべてOKになるまで作業を行う
+        - developer02からテスト依頼を受け取る
+        - テストを実施する
+        - テスト結果をdeveloper02に連携する
+        - 必要に応じてテストの再実施を依頼する
+        - テストが完了次第、developer02に進捗報告を行う
